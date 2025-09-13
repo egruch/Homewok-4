@@ -6,5 +6,29 @@ editor_options:
   chunk_output_type: inline
 ---
 
+```{r}
+library(tidyverse)
+```
 
-Answers go here!
+First row of data to inspect delimiter ADT1_YEAST 0.58 0.61 0.47 0.13 0.50 0.00 0.48 0.22 MIT
+
+```{r}
+yeast_data <- read_fwf("https://www4.stat.ncsu.edu/~online/datasets/yeast.data", 
+                       fwf_widths(c(12,6,6,6,6,6,6,6,6,6),
+                       col_names = c("seq_name", "mcg", "gvh", "alm", "mit", "erl", "pox","vac","nuc","class")))
+```
+
+Start a chain and remove the columns *seq_name* and *nuc*
+
+```{r}
+yeast_data |> 
+  select(c(-"seq_name", -"nuc"))
+```
+Add columns for the mean and median of each numeric column at each class grouping. Note the across function allows us to the same action (make and mean and median column) to multiple columns (the numeric ones).
+```{r}
+yeast_data |> 
+  select(c(-"seq_name", -"nuc")) |>
+  group_by(class) |>
+  mutate(across(where(is.numeric), list(mean = mean, md = median)))
+```
+
