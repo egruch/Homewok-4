@@ -6,5 +6,15 @@ editor_options:
   chunk_output_type: inline
 ---
 
+> The relative path would be "../MyData.csv"
 
-Answers go here!
+> Some of the major benefits of using R projects are being able to store all the related files such as scripts, figures, and reports in a organized way. Additionally, it is integrated with version control systems like git, which make collaboration and sharing very easy.
+
+> Git is the actual version control system that allows you to push updated versions of your projects and track changes from older versions of your project. Github is the platform in which you access/view your work via a repository.
+
+> A difference between data frames and tibbles is that the unique tidyverse functions are built to work on tibbles rather than data frames. Another difference is the defualt print for tibbles contain more information than when printing dataframes. Tibbles print the number of observations, the number of columns, and condenses the output to the first 10 rows to prevent excessive output.
+
+> as_tibble(iris) |>
+    select(starts_with("Petal"), Species) |>
+    filter(Petal.Length < 1.55) |>
+    arrange(Species)
