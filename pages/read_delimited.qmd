@@ -6,11 +6,15 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Load tidyverse library.
 ```{r}
 library(tidyverse)
 ```
 
-First row of data to inspect delimiter ADT1_YEAST 0.58 0.61 0.47 0.13 0.50 0.00 0.48 0.22 MIT
+First row of data to inspect  
+ADT1_YEAST 0.58 0.61 0.47 0.13 0.50 0.00 0.48 0.22 MIT
+
+Using the width of the data column we can read in the data and assign appropiate column names.
 
 ```{r}
 yeast_data <- read_fwf("https://www4.stat.ncsu.edu/~online/datasets/yeast.data", 
@@ -18,7 +22,7 @@ yeast_data <- read_fwf("https://www4.stat.ncsu.edu/~online/datasets/yeast.data",
                        col_names = c("seq_name", "mcg", "gvh", "alm", "mit", "erl", "pox","vac","nuc","class")))
 ```
 
-Start a chain and remove the columns *seq_name* and *nuc*
+Manipulate the yeast data by starting a chain and removing the columns *seq_name* and *nuc*
 
 ```{r}
 yeast_data |> 

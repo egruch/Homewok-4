@@ -6,4 +6,83 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Answers go here!
+Load readxl and tidyverse library.
+```{r}
+library(readxl)
+library(tidyverse)
+```
+Load in white-wine excel data.
+```{r}
+white_wine <- read_excel("../white-wine.xlsx")
+white_wine
+```
+
+Extract column names from second sheet in excel file and use to rename the tibble's column names.
+```{r}
+wine_col_names <- read_excel("../white-wine.xlsx",
+                             sheet = excel_sheets("../white-wine.xlsx")[2])
+colnames(white_wine) <- as.matrix(wine_col_names)
+```
+
+Add column called type to indicate these wines are white
+```{r}
+white_wine <- white_wine |>
+  mutate(type = "white")
+
+white_wine
+```
+
+Load readr library.
+```{r}
+library(readr)
+```
+
+Load in read wine data.
+```{r}
+red_wine <- read_delim("../red-wine.csv", delim = ";")
+red_wine
+```
+Replace the variable names with the same ones as above.
+```{r}
+colnames(red_wine) <- as.matrix(wine_col_names)
+
+red_wine <- red_wine |>
+  mutate(type = "red")
+
+red_wine
+```
+
+Combine two data sets into one data set.
+```{r}
+wine_data <- bind_rows(white_wine, red_wine)
+wine_data
+```
+Filter combined data set for wines with quality greater than 6.5 and alcohol less than 132.
+```{r}
+wine_data |>
+  filter(quality > 6.5 & alcohol < 132)
+```
+
+Continuing the chain, the data is sorted from highest to lowstest quality (descending order).
+```{r}
+wine_data |>
+  filter(quality > 6.5 & alcohol < 132) |>
+  arrange(desc(quality))
+```
+Continuing the chain, we select the variables containing "acid", alcohol, type, and quality.
+```{r}
+wine_data |>
+  select(contains("acid"), alcohol, type, quality) |>
+  filter(quality > 6.5 & alcohol < 132) |>
+  arrange(desc(quality)) 
+```
+Final addition to chain, for each value of the quality variable, calculate the mean and standard deviation of the alcohol as new columns.
+```{r}
+wine_data |>
+  select(contains("acid"), alcohol, type, quality) |>
+  filter(quality > 6.5 & alcohol < 132) |>
+  arrange(desc(quality)) |>
+  group_by(quality) |>
+  mutate(across(alcohol, list(mean = mean, sd = sd)))
+```
+
