@@ -6,6 +6,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
-An example pages site with multiple pages and a table of contents.
+By Ella Gruchacz
 
-This could be a landing page for the site. Feel free to put whatever here!
+This is my landing page for homework 4!
+
+The following pages contain my answers for tasks 1, 2, and 3.
