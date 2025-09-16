@@ -199,7 +199,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#task-2" id="toc-task-2" class="nav-link active" data-scroll-target="#task-2">Task 2</a></li>
+  <li><a href="#task-2" id="toc-task-2" class="nav-link active" data-scroll-target="#task-2">Task 2</a>
+  <ul class="collapse">
+  <li><a href="#glass-data" id="toc-glass-data" class="nav-link" data-scroll-target="#glass-data">Glass data</a></li>
+  <li><a href="#yeast-data" id="toc-yeast-data" class="nav-link" data-scroll-target="#yeast-data">Yeast Data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +274,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div>
-<p>Load in glass data with a comma deliminator and add appropiate column names.</p>
+<section id="glass-data" class="level3">
+<h3 class="anchored" data-anchor-id="glass-data">Glass data</h3>
+<p>Load in glass data with a comma deliminator and add appropriate column names.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>glass_data <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"https://www4.stat.ncsu.edu/online/datasets/glass.data"</span>, <span class="at">delim =</span> <span class="st">","</span>, <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"Id"</span>, <span class="st">"RI"</span>,<span class="st">"Na"</span>, <span class="st">"Mg"</span>,<span class="st">"Al"</span>,<span class="st">"Si"</span>,<span class="st">"K"</span>,<span class="st">"Ca"</span>,<span class="st">"Ba"</span>,<span class="st">"Fe"</span>, <span class="st">"Type_of_glass"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -345,6 +351,9 @@ dbl (11): Id, RI, Na, Mg, Al, Si, K, Ca, Ba, Fe, Type_of_glass
 20   214  1.52  14.2  0     2.08  73.4  0     8.62  1.67  0    headlamps    </code></pre>
 </div>
 </div>
+</section>
+<section id="yeast-data" class="level3">
+<h3 class="anchored" data-anchor-id="yeast-data">Yeast Data</h3>
 <p>First row of data to inspect<br>
 ADT1_YEAST 0.58 0.61 0.47 0.13 0.50 0.00 0.48 0.22 MIT</p>
 <p>Using the width of the data column we can read in the data and assign appropiate column names.</p>
@@ -413,6 +422,7 @@ dbl (8): mcg, gvh, alm, mit, erl, pox, vac, nuc
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

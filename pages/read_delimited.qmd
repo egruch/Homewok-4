@@ -11,7 +11,9 @@ Load tidyverse library.
 ```{r}
 library(tidyverse)
 ```
-Load in glass data with a comma deliminator and add appropiate column names.
+
+### Glass data
+Load in glass data with a comma deliminator and add appropriate column names.
 ```{r}
 glass_data <- read_delim("https://www4.stat.ncsu.edu/online/datasets/glass.data", delim = ",", col_names = c("Id", "RI","Na", "Mg","Al","Si","K","Ca","Ba","Fe", "Type_of_glass"))
 glass_data
@@ -38,6 +40,8 @@ glass_data |>
   filter(Fe < 0.2 & Type_of_glass == c("tableware", "headlamps"))
 
 ```
+
+### Yeast Data 
 
 First row of data to inspect  
 ADT1_YEAST 0.58 0.61 0.47 0.13 0.50 0.00 0.48 0.22 MIT
